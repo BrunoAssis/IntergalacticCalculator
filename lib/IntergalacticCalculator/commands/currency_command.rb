@@ -16,7 +16,7 @@ class CurrencyCommand < Command
   private
   def parse_quantity(quantity_text, definitions)
     roman_numeral = parse_roman(quantity_text, definitions)
-    1
+    roman_numeral.to_arabic
   end
 
   def parse_roman(quantity_text, definitions)
@@ -29,7 +29,7 @@ class CurrencyCommand < Command
         raise ArgumentError, "Undefined alien quantity '#{quantity}'."
       end
     end
-    roman_numeral
+    RomanNumeral.new roman_numeral
   end
 
   def parse_value(value_text, quantity)
