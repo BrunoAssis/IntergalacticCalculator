@@ -1,6 +1,7 @@
 require "IntergalacticCalculator/version"
 require "IntergalacticCalculator/parser"
 require "IntergalacticCalculator/roman_numeral"
+require "IntergalacticCalculator/alien_converter"
 require "IntergalacticCalculator/commands/command"
 require "IntergalacticCalculator/commands/definition_command"
 require "IntergalacticCalculator/commands/currency_command"
@@ -40,9 +41,14 @@ module IntergalacticCalculator
         if command.is_a? DefinitionCommand
           response = command.execute
           @definitions.merge! response
-        elsif command.is_a? CurrencyCommand
-          response = command.execute @definitions
-          @currencies.merge! response
+        else
+          alien_converter = AlienConverter.new @definitions
+          if command.is_a? CurrencyCommand
+            response = command.execute alien_converter
+            @currencies.merge! response
+          elsif command.is_a? QueryDefinitionCommand
+            command.execute alien_converter
+          end
         end
       end
     end

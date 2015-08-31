@@ -2,25 +2,23 @@ require 'test_helper'
 
 class CurrencyCommandTest < Minitest::Test
   def test_valid_currency
-    definition_command = DefinitionCommand.new "glob is I"
-    definitions = definition_command.execute
     currency_command = CurrencyCommand.new "glob glob Silver is 34 Credits"
     expected = {"Silver" => 17}
-    assert_equal expected, currency_command.execute(definitions)
+    alien_converter = AlienConverter.new({"glob" => "I"})
+    assert_equal expected, currency_command.execute(alien_converter)
   end
 
-  def test_invalid_without_definitions
-    assert_output("Undefined alien quantities.\n") {
-      command = CurrencyCommand.new "glob glob Silver is 34 Credits"
-      command.execute({})
+  def test_invalid_without_alien_converter
+    command = CurrencyCommand.new "glob glob Silver is 34 Credits"
+    assert_raises(ArgumentError) {
+      command.execute
     }
   end
 
-
-  def test_invalid_without_single_definition
+  def test_invalid_without_alien_converter_with_definition
+    command = CurrencyCommand.new "glob glob Silver is 34 Credits"
     assert_raises(ArgumentError) {
-      command = CurrencyCommand.new "glob glob Silver is 34 Credits"
-      command.execute({'pish': 'C'})
+      command.execute(AlienConverter.new({"pish" => "C"}))
     }
   end
 
