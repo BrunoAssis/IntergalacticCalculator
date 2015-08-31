@@ -10,9 +10,6 @@ require "IntergalacticCalculator/commands/invalid_command"
 
 module IntergalacticCalculator
   class Calculator
-    attr_reader :filename
-    attr_accessor :definitions, :currencies
-
     def initialize
       @definitions = {}
       @currencies = {}
