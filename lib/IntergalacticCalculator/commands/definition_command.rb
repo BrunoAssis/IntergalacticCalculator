@@ -1,5 +1,4 @@
-class DefinitionCommand
-  include Command
+class DefinitionCommand < Command
 
   def initialize(alien_numeral, roman_numeral)
     @alien_numeral = alien_numeral

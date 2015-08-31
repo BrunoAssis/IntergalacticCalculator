@@ -1,3 +1,2 @@
-class QueryCurrencyCommand
-  include Command
+class QueryCurrencyCommand < Command
 end

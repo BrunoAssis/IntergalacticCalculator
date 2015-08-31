@@ -1,4 +1,4 @@
-module Command
+class Command
   attr_writer :code
 
   def evaluate

@@ -1,3 +1,2 @@
-class QueryDefinitionCommand
-  include Command
+class QueryDefinitionCommand < Command
 end

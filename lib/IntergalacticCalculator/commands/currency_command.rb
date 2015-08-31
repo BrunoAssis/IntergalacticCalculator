@@ -1,3 +1,2 @@
-class CurrencyCommand
-  include Command
+class CurrencyCommand < Command
 end
