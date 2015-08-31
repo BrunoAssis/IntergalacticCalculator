@@ -1,5 +1,6 @@
 require "IntergalacticCalculator/version"
 require "IntergalacticCalculator/parser"
+require "IntergalacticCalculator/roman_numeral"
 require "IntergalacticCalculator/commands/command"
 require "IntergalacticCalculator/commands/definition_command"
 require "IntergalacticCalculator/commands/currency_command"
