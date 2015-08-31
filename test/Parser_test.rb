@@ -27,6 +27,8 @@ class ParserTest < Minitest::Test
 
   def test_parse_invalid_query
     command = @parser.parse "how much wood could a woodchuck chuck if a woodchuck could chuck wood ?"
-    assert_equal command.evaluate, "puts 'I have no idea what you are talking about'"
+    assert_output("I have no idea what you are talking about\n") {
+      command.execute
+    }
   end
 end

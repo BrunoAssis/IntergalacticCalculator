@@ -10,6 +10,12 @@ require "IntergalacticCalculator/commands/invalid_command"
 module IntergalacticCalculator
   class Calculator
     attr_reader :filename
+    attr_accessor :definitions, :currencies
+
+    def initialize
+      @definitions = {}
+      @currencies = {}
+    end
 
     def calculate!(filename)
       @filename = filename
@@ -33,7 +39,13 @@ module IntergalacticCalculator
       parser = Parser.new
       File.foreach(@filename) do |line|
         command = parser.parse line
-        eval command.evaluate
+        if command.is_a? DefinitionCommand
+          response = command.execute
+          definitions.merge response
+        elsif command.is_a? CurrencyCommand
+          response = command.execute definitions
+          currencies.merge response
+        end
       end
     end
 
