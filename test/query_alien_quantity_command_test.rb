@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class QueryDefinitionCommandTest < Minitest::Test
+class QueryAlienQuantityCommandTest < Minitest::Test
   def setup
     @alien_converter = AlienConverter.new({"glob" => "I",
                                            "pish" => "X",
@@ -8,20 +8,20 @@ class QueryDefinitionCommandTest < Minitest::Test
   end
 
   def test_valid_query_definition
-    command = QueryDefinitionCommand.new "how much is pish tegj glob glob ?"
+    command = QueryAlienQuantityCommand.new "how much is pish tegj glob glob ?"
     assert_equal "pish tegj glob glob is 42",
                  command.execute(@alien_converter)
   end
 
   def test_valid_complex_query_definition
-    command = QueryDefinitionCommand.new "how much is pish tegj glob pish ?"
+    command = QueryAlienQuantityCommand.new "how much is pish tegj glob pish ?"
     assert_equal "pish tegj glob pish is 49",
                  command.execute(@alien_converter)
   end
 
   def test_invalid_query_definition
     assert_raises(ArgumentError) {
-      command = QueryDefinitionCommand.new
+      command = QueryAlienQuantityCommand.new
     }
   end
 end

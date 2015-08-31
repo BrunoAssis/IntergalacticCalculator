@@ -7,17 +7,17 @@ class ParserTest < Minitest::Test
 
   def test_parse_definition
     command = @parser.parse "glob is I"
-    assert command.is_a? DefinitionCommand
+    assert command.is_a? SetAlienNumeralCommand
   end
 
   def test_parse_currency
     command = @parser.parse "glob glob Silver is 34 Credits"
-    assert command.is_a? CurrencyCommand
+    assert command.is_a? SetCurrencyCommand
   end
 
   def test_parse_query_definition
     command = @parser.parse "how much is pish tegj glob glob ?"
-    assert command.is_a? QueryDefinitionCommand
+    assert command.is_a? QueryAlienQuantityCommand
   end
 
   def test_parse_query_currency

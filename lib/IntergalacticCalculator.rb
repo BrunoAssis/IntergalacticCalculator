@@ -3,16 +3,16 @@ require "IntergalacticCalculator/parser"
 require "IntergalacticCalculator/roman_numeral"
 require "IntergalacticCalculator/alien_converter"
 require "IntergalacticCalculator/commands/command"
-require "IntergalacticCalculator/commands/definition_command"
-require "IntergalacticCalculator/commands/currency_command"
-require "IntergalacticCalculator/commands/query_definition_command"
+require "IntergalacticCalculator/commands/set_alien_numeral_command"
+require "IntergalacticCalculator/commands/set_currency_command"
+require "IntergalacticCalculator/commands/query_alien_quantity_command"
 require "IntergalacticCalculator/commands/query_currency_command"
 require "IntergalacticCalculator/commands/invalid_command"
 
 module IntergalacticCalculator
   class Calculator
     def initialize
-      @definitions = {}
+      @alien_numerals = {}
       @currencies = {}
     end
 
@@ -38,16 +38,16 @@ module IntergalacticCalculator
       parser = Parser.new
       File.foreach(@filename) do |line|
         command = parser.parse line
-        if command.is_a? DefinitionCommand
-          definition = command.execute
-          @definitions.merge! definition
+        if command.is_a? SetAlienNumeralCommand
+          alien_numeral = command.execute
+          @alien_numerals.merge! alien_numeral
         else
-          alien_converter = AlienConverter.new @definitions
-          if command.is_a? CurrencyCommand
+          alien_converter = AlienConverter.new @alien_numerals
+          if command.is_a? SetCurrencyCommand
             currency = command.execute alien_converter
             @currencies.merge! currency
           else
-            if command.is_a? QueryDefinitionCommand
+            if command.is_a? QueryAlienQuantityCommand
               response = command.execute alien_converter
             elsif command.is_a? QueryCurrencyCommand
               response = command.execute alien_converter, @currencies

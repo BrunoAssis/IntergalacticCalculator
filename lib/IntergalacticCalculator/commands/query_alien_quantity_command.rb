@@ -1,4 +1,4 @@
-class QueryDefinitionCommand < Command
+class QueryAlienQuantityCommand < Command
   PATTERN = /how much is (?<alien_quantity>.*?) \?/
 
   def execute(alien_converter)

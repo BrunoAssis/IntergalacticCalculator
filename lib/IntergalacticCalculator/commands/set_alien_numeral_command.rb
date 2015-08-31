@@ -1,4 +1,4 @@
-class DefinitionCommand < Command
+class SetAlienNumeralCommand < Command
   PATTERN = /(?<alien_numeral>.*?) is (?<roman_numeral>I|V|X|L|C|D|M)/
 
   def execute

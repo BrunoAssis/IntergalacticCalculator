@@ -6,7 +6,7 @@ class AlienConverterTest < Minitest::Test
     assert_equal 9, alien_numeral.to_human("glob pish")
   end
 
-  def test_invalid_without_definitions
+  def test_invalid_without_alien_numerals
     assert_raises(ArgumentError) {
       alien_numeral = AlienConverter.new({})
     }

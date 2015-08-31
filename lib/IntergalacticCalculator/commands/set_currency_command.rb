@@ -1,4 +1,4 @@
-class CurrencyCommand < Command
+class SetCurrencyCommand < Command
   PATTERN = /(?<alien_quantity>.*?) (?<currency>[A-Z][a-z]*?) is (?<total_value>\d+) Credits/
 
   def execute(alien_converter)

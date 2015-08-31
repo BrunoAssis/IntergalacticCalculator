@@ -1,9 +1,9 @@
 class AlienConverter
-  def initialize(alien_numbers)
-    if alien_numbers != nil && alien_numbers.empty?
-      raise ArgumentError, "Undefined alien numbers."
+  def initialize(alien_numerals)
+    if alien_numerals != nil && alien_numerals.empty?
+      raise ArgumentError, "Undefined alien numerals."
     else
-      @alien_numbers = alien_numbers
+      @alien_numerals = alien_numerals
     end
   end
 
@@ -17,10 +17,10 @@ class AlienConverter
     roman_numeral = ""
     alien_digits = alien_numeral.split(" ")
     alien_digits.each do |alien_digit|
-      if @alien_numbers.has_key? alien_digit
-        roman_numeral << @alien_numbers[alien_digit]
+      if @alien_numerals.has_key? alien_digit
+        roman_numeral << @alien_numerals[alien_digit]
       else
-        raise ArgumentError, "Undefined alien number '#{alien_digit}'."
+        raise ArgumentError, "Undefined alien numeral '#{alien_digit}'."
       end
     end
     RomanNumeral.new roman_numeral

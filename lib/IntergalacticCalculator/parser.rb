@@ -1,8 +1,8 @@
 class Parser
   def initialize
-    @valid_commands = [DefinitionCommand,
-                       CurrencyCommand,
-                       QueryDefinitionCommand,
+    @valid_commands = [SetAlienNumeralCommand,
+                       SetCurrencyCommand,
+                       QueryAlienQuantityCommand,
                        QueryCurrencyCommand]
     @invalid_command = InvalidCommand
   end
