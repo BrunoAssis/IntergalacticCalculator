@@ -42,10 +42,10 @@ module IntergalacticCalculator
         command = parser.parse line
         if command.is_a? DefinitionCommand
           response = command.execute
-          definitions.merge response
+          @definitions.merge! response
         elsif command.is_a? CurrencyCommand
-          response = command.execute definitions
-          currencies.merge response
+          response = command.execute @definitions
+          @currencies.merge! response
         end
       end
     end
