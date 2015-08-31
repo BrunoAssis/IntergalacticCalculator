@@ -11,7 +11,7 @@ class RomanNumeralTest < Minitest::Test
     assert_equal 2666, roman_numeral.to_arabic
   end
 
-  def test_invalid_quantity
+  def test_invalid_roman_numeral
     roman_numeral = RomanNumeral.new("IIII")
     assert_raises(ArgumentError) {
       roman_numeral.to_arabic

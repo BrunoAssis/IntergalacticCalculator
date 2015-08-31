@@ -14,16 +14,9 @@ class QueryDefinitionCommandTest < Minitest::Test
     }
   end
 
-  def test_invalid_without_alien_converter
-    command = QueryDefinitionCommand.new "how much is pish tegj glob glob ?"
-    assert_raises(ArgumentError) {
-      command.execute
-    }
-  end
-
-  def test_invalid_without_alien_converter_with_definition
-    command = QueryDefinitionCommand.new "how much is pish tegj fake glob ?"
-    assert_raises(ArgumentError) {
+  def test_valid_complex_query_definition
+    command = QueryDefinitionCommand.new "how much is pish tegj glob pish ?"
+    assert_output("pish tegj glob pish is 49\n") {
       command.execute(@alien_converter)
     }
   end

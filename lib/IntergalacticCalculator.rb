@@ -48,6 +48,10 @@ module IntergalacticCalculator
             @currencies.merge! response
           elsif command.is_a? QueryDefinitionCommand
             command.execute alien_converter
+          elsif command.is_a? QueryCurrencyCommand
+            command.execute alien_converter, @currencies
+          elsif command.is_a? InvalidCommand
+            command.execute
           end
         end
       end

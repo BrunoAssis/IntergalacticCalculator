@@ -1,13 +1,13 @@
 class AlienConverter
-  def initialize(definitions)
-    if definitions != nil && definitions.empty?
-      raise ArgumentError, "Undefined alien quantities."
+  def initialize(alien_numbers)
+    if alien_numbers != nil && alien_numbers.empty?
+      raise ArgumentError, "Undefined alien numbers."
     else
-      @definitions = definitions
+      @alien_numbers = alien_numbers
     end
   end
 
-  def to_arabic(alien_numeral)
+  def to_human(alien_numeral)
     roman_numeral = parse_roman alien_numeral
     roman_numeral.to_arabic
   end
@@ -15,12 +15,12 @@ class AlienConverter
   private
   def parse_roman(alien_numeral)
     roman_numeral = ""
-    quantities = alien_numeral.split(" ")
-    quantities.each do |quantity|
-      if @definitions.has_key? quantity
-        roman_numeral << @definitions[quantity]
+    alien_digits = alien_numeral.split(" ")
+    alien_digits.each do |alien_digit|
+      if @alien_numbers.has_key? alien_digit
+        roman_numeral << @alien_numbers[alien_digit]
       else
-        raise ArgumentError, "Undefined alien quantity '#{quantity}'."
+        raise ArgumentError, "Undefined alien number '#{alien_digit}'."
       end
     end
     RomanNumeral.new roman_numeral

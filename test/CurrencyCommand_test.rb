@@ -8,20 +8,6 @@ class CurrencyCommandTest < Minitest::Test
     assert_equal expected, currency_command.execute(alien_converter)
   end
 
-  def test_invalid_without_alien_converter
-    command = CurrencyCommand.new "glob glob Silver is 34 Credits"
-    assert_raises(ArgumentError) {
-      command.execute
-    }
-  end
-
-  def test_invalid_without_alien_converter_with_definition
-    command = CurrencyCommand.new "glob glob Silver is 34 Credits"
-    assert_raises(ArgumentError) {
-      command.execute(AlienConverter.new({"pish" => "C"}))
-    }
-  end
-
   def test_invalid_currency
     assert_raises(ArgumentError) {
       command = CurrencyCommand.new
