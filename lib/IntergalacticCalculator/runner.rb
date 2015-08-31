@@ -20,7 +20,7 @@ else
     parser = Parser.new
     File.foreach(filename) do |line|
       command = parser.parse line
-      eval command
+      eval command.evaluate
     end
   end
 end
