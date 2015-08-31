@@ -7,7 +7,7 @@ class QueryCurrencyCommand < Command
     human_quantity = alien_converter.to_human alien_quantity
     currency = parse_currency(matches[:currency], currencies)
     credits_value = convert_quantity_to_credits(human_quantity, currencies[currency])
-    puts "#{alien_quantity} #{currency} is #{credits_value} Credits"
+    "#{alien_quantity} #{currency} is #{credits_value} Credits"
   end
 
   private

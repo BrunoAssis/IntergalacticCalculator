@@ -39,19 +39,22 @@ module IntergalacticCalculator
       File.foreach(@filename) do |line|
         command = parser.parse line
         if command.is_a? DefinitionCommand
-          response = command.execute
-          @definitions.merge! response
+          definition = command.execute
+          @definitions.merge! definition
         else
           alien_converter = AlienConverter.new @definitions
           if command.is_a? CurrencyCommand
-            response = command.execute alien_converter
-            @currencies.merge! response
-          elsif command.is_a? QueryDefinitionCommand
-            command.execute alien_converter
-          elsif command.is_a? QueryCurrencyCommand
-            command.execute alien_converter, @currencies
-          elsif command.is_a? InvalidCommand
-            command.execute
+            currency = command.execute alien_converter
+            @currencies.merge! currency
+          else
+            if command.is_a? QueryDefinitionCommand
+              response = command.execute alien_converter
+            elsif command.is_a? QueryCurrencyCommand
+              response = command.execute alien_converter, @currencies
+            elsif command.is_a? InvalidCommand
+              response = command.execute
+            end
+            puts response
           end
         end
       end

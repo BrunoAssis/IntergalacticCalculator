@@ -9,16 +9,14 @@ class QueryDefinitionCommandTest < Minitest::Test
 
   def test_valid_query_definition
     command = QueryDefinitionCommand.new "how much is pish tegj glob glob ?"
-    assert_output("pish tegj glob glob is 42\n") {
-      command.execute(@alien_converter)
-    }
+    assert_equal "pish tegj glob glob is 42",
+                 command.execute(@alien_converter)
   end
 
   def test_valid_complex_query_definition
     command = QueryDefinitionCommand.new "how much is pish tegj glob pish ?"
-    assert_output("pish tegj glob pish is 49\n") {
-      command.execute(@alien_converter)
-    }
+    assert_equal "pish tegj glob pish is 49",
+                 command.execute(@alien_converter)
   end
 
   def test_invalid_query_definition

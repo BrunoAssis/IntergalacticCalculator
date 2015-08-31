@@ -3,6 +3,6 @@ class InvalidCommand < Command
   end
 
   def execute
-    puts 'I have no idea what you are talking about'
+    "I have no idea what you are talking about"
   end
 end
