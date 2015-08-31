@@ -15,8 +15,6 @@ class RomanNumeral
     "I"   => 1
   }
 
-  attr_reader :roman_numeral
-
   def initialize(roman_numeral)
     @roman_numeral = roman_numeral
   end
