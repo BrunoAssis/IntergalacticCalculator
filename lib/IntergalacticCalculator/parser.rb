@@ -1,5 +1,6 @@
 class Parser
   def parse(text)
+    text.gsub!(/[\r\n]/, '')
     if text =~ /(.*?) is (I|V|X|L|C|D|M)/
       DefinitionCommand.new
     elsif text =~ /(.*?) ([A-Z][a-z]*) is (\d+) Credits/
