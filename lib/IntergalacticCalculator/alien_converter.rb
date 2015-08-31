@@ -1,11 +1,7 @@
 module IntergalacticCalculator
   class AlienConverter
     def initialize(alien_numerals)
-      if alien_numerals != nil && alien_numerals.empty?
-        raise ArgumentError, "Undefined alien numerals."
-      else
-        @alien_numerals = alien_numerals
-      end
+      @alien_numerals = alien_numerals || {}
     end
 
     def to_human(alien_numeral)

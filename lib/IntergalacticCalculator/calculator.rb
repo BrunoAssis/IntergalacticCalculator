@@ -27,18 +27,12 @@ module IntergalacticCalculator
       parser = Parser.new
       File.foreach(@filename) do |line|
         command = parser.parse line
-        if command.is_a? SetAlienNumeralCommand
-          new_alien_numeral = command.execute
-          @alien_numerals.merge! new_alien_numeral
-        elsif command.is_a? SetCurrencyCommand
-          new_currency = command.execute(build_alien_converter)
-          @currencies.merge! new_currency
-        elsif command.is_a? QueryAlienQuantityCommand
-          puts command.execute(build_alien_converter)
-        elsif command.is_a? QueryCurrencyCommand
-          puts command.execute(build_alien_converter, @currencies)
-        elsif command.is_a? InvalidCommand
-          puts command.execute
+        options = {alien_numerals: @alien_numerals,
+                   currencies: @currencies,
+                   alien_converter: build_alien_converter}
+        response = command.execute options
+        if response.is_a? String
+          puts response
         end
       end
     end

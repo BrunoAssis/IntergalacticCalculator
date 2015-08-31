@@ -6,7 +6,7 @@ module IntergalacticCalculator
       @command_text = command_text
     end
 
-    def execute
+    def execute(options = {})
       nil
     end
   end
