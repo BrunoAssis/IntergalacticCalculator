@@ -2,7 +2,7 @@ module IntergalacticCalculator
   class QueryCurrencyCommand < Command
     PATTERN = /how many Credits is (?<alien_quantity>.*?) (?<currency>[A-Z][a-z]*) ?/
 
-    def execute(options = {})
+    def execute!(options = {})
       alien_converter = options[:alien_converter]
       currencies = options[:currencies]
       matches = PATTERN.match @command_text

@@ -2,7 +2,7 @@ module IntergalacticCalculator
   class QueryAlienQuantityCommand < Command
     PATTERN = /how much is (?<alien_quantity>.*?) \?/
 
-    def execute(options = {})
+    def execute!(options = {})
       alien_converter = options[:alien_converter]
       matches = PATTERN.match @command_text
       alien_quantity = matches[:alien_quantity]

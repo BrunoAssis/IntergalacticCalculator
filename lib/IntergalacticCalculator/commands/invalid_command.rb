@@ -3,7 +3,7 @@ module IntergalacticCalculator
     def initialize
     end
 
-    def execute(options = {})
+    def execute!(options = {})
       "I have no idea what you are talking about"
     end
   end

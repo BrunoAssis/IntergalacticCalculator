@@ -27,7 +27,7 @@ module IntergalacticCalculator
 
     def test_parse_invalid_query
       command = @parser.parse "how much wood could a woodchuck chuck if a woodchuck could chuck wood ?"
-      assert_equal "I have no idea what you are talking about", command.execute
+      assert_equal "I have no idea what you are talking about", command.execute!
     end
   end
 end

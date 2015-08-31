@@ -30,7 +30,7 @@ module IntergalacticCalculator
         options = {alien_numerals: @alien_numerals,
                    currencies: @currencies,
                    alien_converter: build_alien_converter}
-        response = command.execute options
+        response = command.execute! options
         if response.is_a? String
           puts response
         end
