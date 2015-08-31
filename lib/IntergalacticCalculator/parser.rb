@@ -1,26 +1,28 @@
-class Parser
-  def initialize
-    @valid_commands = [SetAlienNumeralCommand,
-                       SetCurrencyCommand,
-                       QueryAlienQuantityCommand,
-                       QueryCurrencyCommand]
-    @invalid_command = InvalidCommand
-  end
+module IntergalacticCalculator
+  class Parser
+    def initialize
+      @valid_commands = [SetAlienNumeralCommand,
+                         SetCurrencyCommand,
+                         QueryAlienQuantityCommand,
+                         QueryCurrencyCommand]
+      @invalid_command = InvalidCommand
+    end
 
-  def parse(text)
-    text.gsub!(/[\r\n]/, '')
-    command = nil
+    def parse(text)
+      text.gsub!(/[\r\n]/, '')
+      command = nil
 
-    @valid_commands.each do |command_class|
-      if text =~ command_class::PATTERN
-        command = command_class.new text
+      @valid_commands.each do |command_class|
+        if text =~ command_class::PATTERN
+          command = command_class.new text
+        end
       end
-    end
 
-    unless command
-      command = @invalid_command.new
-    end
+      unless command
+        command = @invalid_command.new
+      end
 
-    command
+      command
+    end
   end
 end
