@@ -12,6 +12,6 @@ class CurrencyCommand < Command
   private
   def parse_value(total_value_text, quantity)
     total_value = total_value_text.to_i
-    single_value = total_value / quantity
+    single_value = total_value.to_f / quantity
   end
 end
