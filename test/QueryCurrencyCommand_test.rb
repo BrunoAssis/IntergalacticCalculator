@@ -5,7 +5,8 @@ class QueryCurrencyCommandTest < Minitest::Test
     @alien_converter = AlienConverter.new({"glob" => "I",
                                            "prok" => "V"})
     @currencies = {"Silver" => 17,
-                   "Gold" => 10000000}
+                   "Gold" => 14450,
+                   "Iron" => 195.5}
   end
 
   def test_valid_query_currency_silver
@@ -25,6 +26,14 @@ class QueryCurrencyCommandTest < Minitest::Test
   def test_valid_query_currency_iron
     command = QueryCurrencyCommand.new "how many Credits is glob prok Iron ?"
     assert_output("glob prok Iron is 782 Credits\n") {
+      command.execute(@alien_converter, @currencies)
+    }
+  end
+
+
+  def test_inexistant_currency
+    command = QueryCurrencyCommand.new "how many Credits is glob prok Crystal ?"
+    assert_raises(ArgumentError) {
       command.execute(@alien_converter, @currencies)
     }
   end
