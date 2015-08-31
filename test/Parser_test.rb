@@ -1,9 +1,31 @@
 require 'test_helper'
 
 class ParserTest < Minitest::Test
+  def setup
+    @parser = Parser.new
+  end
+
   def test_parse_definition
-    parser = Parser.new
-    command = parser.parse "glob is I"
+    command = @parser.parse "glob is I"
     assert command.is_a? DefinitionCommand
+  end
+
+  def test_parse_currency
+    command = @parser.parse "glob glob Silver is 34 Credits"
+    assert command.is_a? CurrencyCommand
+  end
+
+  def test_parse_query_definition
+    command = @parser.parse "how much is pish tegj glob glob ?"
+    assert command.is_a? QueryDefinitionCommand
+  end
+
+  def test_parse_query_currency
+    command = @parser.parse "how many Credits is glob prok Silver ?"
+    assert command.is_a? QueryCurrencyCommand
+  end
+
+  def test_parse_invalid_query
+    assert false
   end
 end
