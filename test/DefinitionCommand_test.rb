@@ -2,7 +2,7 @@ require 'test_helper'
 
 class DefinitionCommandTest < Minitest::Test
   def test_valid_definition
-    command = DefinitionCommand.new "glob", "I"
+    command = DefinitionCommand.new "glob is I"
     assert command.evaluate, "glob = \"I\""
   end
 
