@@ -11,6 +11,7 @@ in another app.
 
 To use it alone, you would [install the gem](#installation) and run its binary,
 like so:
+
     $ intergalactic_calculator example_input.txt
 
 As you specifically asked to not send ANY executable files in the submission,
