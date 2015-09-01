@@ -66,12 +66,14 @@ user, so the program works if you run it with the provided examples, or if you
 make up your own:
 
 example_input.txt (excerpt)
+
     glob is I
     glob glob Silver is 34 Credits
     how much is pish tegj glob glob ?
     how many Credits is glob prok Silver ?
 
 example_input_2.txt (excerpt)
+
     pacoca is I
     pacoca karen Diamante is 200 Credits
     how many Credits is bruno karen Diamante ?
